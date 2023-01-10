@@ -1,3 +1,6 @@
 h1 {
   font-size: 4rem;
 }
+.row {
+  flex-wrap: nowrap;
+}
