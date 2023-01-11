@@ -18,10 +18,10 @@
       </h1>
     </header>
     <main>
-      <div class="container m-0 d-flex">
+      <div class="container m-0">
         <!-- Content here -->
-        <div class="row">
-          <div class="col-6 col-md-4 ">
+        <div class="row d-flex">
+          <div class="col-6 col-md-4">
             <h2>Search for a City:</h2>
             <input
               type="text"
@@ -29,7 +29,7 @@
               class="form-control"
               placeholder="Enter city ..." />
             <br />
-            <button type="button" class="btn btn-info w-100">Search</button>
+            <button type="button" class="btn btn-info w-100 btnText">Search</button>
             <hr />
             <div class="d-grid gap-2 col-6 mx-auto w-100">
               <button class="btn btn-info" type="button">Orlando</button>
@@ -40,20 +40,17 @@
               <button class="btn btn-info" type="button">Medellin</button>
             </div>
           </div>
-
-          <div class="row">
-          <div class="col-9 p-4">
-            <h2 class="searched-city">
-              Orlando
-              <span class="today-date fw-bold">(01/09/2023)</span>
-              <span class="today-icon">❄️</span>
+          <div class="col p-0">
+            <h2 class="city-name">
+             
+              <span class="today-date fw-bold">(01/09/2023)
             </h2>
-            <section><p>Temp: 81°F</p></section>
-            <section><p>Wind: 2 MPH</p></section>
-            <section><p>Humidity: 44%</p></section>
-            <div class="row p-2 gap-3 p-3">
+            <section><p>Temp:<span class="temperature"></span>°F </p></section>
+            <section><p>Wind: <span class="wind"></span> MPH</p></section>
+            <section><p>Humidity: <span class="humidity"></span>%</p></section>
+            <div class="row p-2 gap-3 p-0 h-70">
               <div class="col-2 border border-info rounded">
-                <h3 class="first-day">1/10/2023</h3>
+                <h3 class="first-day p-4">Monday 1/10/2023</h3>
                 <section class="icon">☁️</section>
                 <p>Temp: 62 °F</p>
                 <p>Wind: 4 MPH</p>
@@ -70,7 +67,7 @@
 
               <div class="col-2 border border-info rounded">
                 <h3 class="first-day">1/10/2023</h3>
-                <section class="icon">☁️</section>
+                <section class="weather-icon">☁️</section>
                 <p>Temp: 62 °F</p>
                 <p>Wind: 4 MPH</p>
                 <p>Humidity: 62 %</p>
@@ -78,7 +75,7 @@
 
               <div class="col-2 border border-info rounded">
                 <h3 class="first-day">1/10/2023</h3>
-                <section class="icon">☁️</section>
+                <section class="weather-icon">☁️</section>
                 <p>Temp: 62 °F</p>
                 <p>Wind: 4 MPH</p>
                 <p>Humidity: 62 %</p>
@@ -86,14 +83,13 @@
 
               <div class="col-2 border border-info rounded">
                 <h3 class="first-day">1/10/2023</h3>
-                <section class="icon">☁️</section>
+                <section class="weather-icon">☁️</section>
                 <p>Temp: 62 °F</p>
                 <p>Wind: 4 MPH</p>
                 <p>Humidity: 62 %</p>
               </div>
             </div>
-</div>
-
+          </div>
         </div>
       </div>
     </main>
