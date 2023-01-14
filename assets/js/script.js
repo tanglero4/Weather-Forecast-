@@ -5,7 +5,7 @@
 let apiKey = `1e85ad1f16666a315c273aa6eb03df77`;
 
 fetch(
-  "http://api.openweathermap.org/geo/1.0/direct?appid=1e85ad1f16666a315c273aa6eb03df77&q=Orlando"
+  "https://api.openweathermap.org/geo/1.0/direct?appid=1e85ad1f16666a315c273aa6eb03df77&q=Orlando"
 )
   .then(function (response) {
     return response.json();
@@ -17,7 +17,7 @@ fetch(
   });
 function searchCity(cityName) {
   fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?appid=1e85ad1f16666a315c273aa6eb03df77&q=${cityName}`
+    `https://api.openweathermap.org/geo/1.0/direct?appid=1e85ad1f16666a315c273aa6eb03df77&q=${cityName}`
   )
     .then(function (response) {
       return response.json();
@@ -39,7 +39,7 @@ searchBtn.addEventListener("click", () => {
 function findWeather(lat, lon) {
   console.log(lat, lon);
   fetch(
-    `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=1e85ad1f16666a315c273aa6eb03df77&units=imperial`
+    `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=1e85ad1f16666a315c273aa6eb03df77&units=imperial`
   )
     .then(function (response) {
       return response.json();
@@ -69,7 +69,7 @@ function findWeather(lat, lon) {
       var iconPicture = document.querySelector(".icon");
       iconPicture.setAttribute(
         "src",
-        `http://openweathermap.org/img/wn/${iconImage}@2x.png`
+        `https://openweathermap.org/img/wn/${iconImage}@2x.png`
       );
 
       forecast(weather.list);
