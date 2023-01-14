@@ -2,39 +2,60 @@
 // 2. Pass the city to the geoCode function
 // 3. Pass the Lat and Long to the GetWeather function
 
-document.querySelector(".current-date").append(new Date().toDateString());
-
 let apiKey = `1e85ad1f16666a315c273aa6eb03df77`;
 
 fetch(
-  "http://api.openweathermap.org/geo/1.0/direct?appid=1e85ad1f16666a315c273aa6eb03df77&q=Orlandos"
+  "http://api.openweathermap.org/geo/1.0/direct?appid=1e85ad1f16666a315c273aa6eb03df77&q=Orlando"
 )
   .then(function (response) {
     return response.json();
   })
   .then(function (data) {
-
+    // for (i = 0; i < 5; i+6) {
+    //
+    // }
   });
+function searchCity(cityName) {
+  fetch(
+    `http://api.openweathermap.org/geo/1.0/direct?appid=1e85ad1f16666a315c273aa6eb03df77&q=${cityName}`
+  )
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      findWeather(data[0].lat, data[0].lon);
+      // for (i = 0; i < 5; i+6) {
+      //
+      console.log(data);
+      // }
+    });
+}
+var searchBtn = document.getElementById("searchBtn");
+searchBtn.addEventListener("click", () => {
+  var cityName = document.getElementById("city-input").value;
+  searchCity(cityName);
+});
 
 function findWeather(lat, lon) {
-  // let lon = data[0].lon;
-  // let lat = data[0].lat;
-  // console.log(lat, lon);
+  console.log(lat, lon);
   fetch(
-    `api.openweathermap.org/data/2.5/forecast?id=${cityName}&appid=1e85ad1f16666a315c273aa6eb03df77`
+    `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=1e85ad1f16666a315c273aa6eb03df77&units=imperial`
   )
     .then(function (response) {
       return response.json();
     })
     .then(function (weather) {
       console.log(weather);
-
-      document.querySelector(".city-input").append(cityName);
+      let city = weather.city.name;
+      console.log(city);
+      document.querySelector(".city-name").textContent = city;
+      // city = document.querySelector(".city-name").append(city);
+      document.querySelector(".current-date").append(new Date().toDateString());
       //getting the Icon and make an image with it..
       let iconImage = weather.list[0].weather[0].icon;
       console.log(iconImage);
       //   document.querySelector(".icon").append(iconImage);
-      let weatherIcon = document.createElement("img");
+      // let weatherIcon = document.createElement("img");
 
       let temperature = weather.list[0].main.temp;
       document.querySelector(".temperature").append(temperature);
@@ -45,11 +66,29 @@ function findWeather(lat, lon) {
       let humidity = weather.list[0].main.humidity;
       document.querySelector(".humidity").append(humidity);
       console.log(weather);
-
-      weatherIcon.setAttribute(
+      var iconPicture = document.querySelector(".icon");
+      iconPicture.setAttribute(
         "src",
         `http://openweathermap.org/img/wn/${iconImage}@2x.png`
       );
-      document.querySelector(".today-icon").append(weatherIcon);
+
+      forecast(weather.list);
     });
+}
+function forecast(weather) {
+  console.log(weather);
+  for (i = 0; i < weather.length; i += 8) {
+    console.log(weather[i]);
+    var div = document.createElement("div");
+    div.className = "col-2 border border-info rounded";
+    var weatherCard = ` 
+                <h3 class="first-day p-4 placeholder-wave"></h3>
+                <section class="icon"></section>
+                <p>Temp: ${weather[i].main.temp}°F</p>
+                <p>Wind: ${weather[i].wind.speed}MPH</p>
+                <p>Humidity: ${weather[i].main.humidity}%</p>
+    `;
+    div.innerHTML = weatherCard;
+    document.querySelector(".forecast-list").appendChild(div);
+  }
 }
